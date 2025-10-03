@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
   - name: nginx
-    image: 10mindesign/argocd
+    image: 10mindesign/argocd:123
     ports:
     - containerPort: 80
