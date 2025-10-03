@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: ecom-backend
+  template:
+    metadata:
+      labels:
+        app: ecom-backend
+    spec: 
+      containers:
+        - name: ecom-backend
+          image: 100xdevs/todo-app-test:1
+          ports:
+          - containerPort: 3000
+          env:
+          - name: PORT
+            valueFrom:
+              configMapKeyRef:
+                name: backend-config
+                key: port
+          - name: MAX_CARTS
+            valueFrom:
+              configMapKeyRef:
+                name: backend-config
+                key: max_carts
+
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: backend-secret
+                key: db_url
+          volumeMounts:
+            - name: env-file
+              readOnly: true
+              mountPath: "/app/secret"
+      volumes:
+        - name: env-file
+          secret:
+            secretName: backend-secret          
