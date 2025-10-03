@@ -5,19 +5,6 @@ metadata:
 spec:
   containers:
   - name: nginx
-    image: nginx
-    ports:
-    - containerPort: 80
-
----
-
-apiVersion: v1
-kind: Pod
-metadata:
-  name: httpd
-spec:
-  containers:
-  - name: httpd
-    image: httpd
+    image: argocd/test:letest
     ports:
     - containerPort: 80
