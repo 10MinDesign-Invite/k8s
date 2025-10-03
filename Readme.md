@@ -13,3 +13,8 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 --------port forwart for gui---------
 
 kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+----- getting username and passwords-
+
+kubectl -n argocd get secret argocd-initial-admin-secret
+kubectl -n argocd get secret argocd-initial-admin-secret -o json
