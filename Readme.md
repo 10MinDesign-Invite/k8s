@@ -36,3 +36,8 @@ Deployment.yml then
 
 helm install postgres-chart-1 .
 -- then 0-namespace.yml run firset and all files apply leter automatic and if you change value.namespace: postgres-chart-2 then new namesapce is apply and all files is in new 2 namespace
+
+-- change something in code then
+CMD helm upgrade postgres-chart .
+-- debug the helm chart
+CMD helm template postgres-chart .
